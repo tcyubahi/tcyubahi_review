@@ -1,3 +1,4 @@
+
 package main.java;
 
 // SortDemo.java     
@@ -21,7 +22,7 @@ public class SortDemoData  {
 	        	StringTokenizer inputTokens = new StringTokenizer(string);
 	        	String[] result = string.split("\\s");
 
-                String inputStr = "";
+                String str = "";
                     
                 int n; // will be the length of myArray        
                 if (inputTokens.hasMoreTokens()) {
@@ -35,8 +36,8 @@ public class SortDemoData  {
 
                         // interpret the next number as number of entries and 
                         // generate a random vector with entries 1 ... n
-                	       inputStr = inputTokens.nextToken(); 
-                        n =  Integer.valueOf(inputStr).intValue(); 
+                        str = inputTokens.nextToken(); 
+                        n =  Integer.valueOf(str).intValue(); 
                         // may throw NegativeArraySizeException
                         myArray = new Item[n];
                         boolean[] tempArray = new boolean[n + 1];
@@ -56,13 +57,13 @@ public class SortDemoData  {
                         for (int i = 0; i < n; i++) {
                         	
 
-                        		   inputStr = result[i];
-                                if(Arrays.asList(Arrays.copyOfRange(result, 0, i)).contains(inputStr)){
+                                str = result[i];
+                                if(Arrays.asList(Arrays.copyOfRange(result, 0, i)).contains(str)){
                                 	count = count + 1;
                                 }
                                 else{
                                 	array[i-count] = new Item( 
-                                	        Integer.valueOf(inputStr).intValue());
+                                	        Integer.valueOf(str).intValue());
                                 }
 
                                 
@@ -87,37 +88,30 @@ public class SortDemoData  {
                         
                         //SER 316
                         //if (choice < 0 || choice > 5) choice = 0;
-                        
-                   
-                        switch (choice) {
-                        case 0 : { SortAlgos.bubbleSort(myArray);  
-                        			algo = "Bubble Sort";
-                                   break;
-                                  }
-                        case 1 : { SortAlgos.selectionSort(myArray); 
-                        			algo = "Selection Sort";
-                                   break;
-                                 }
-                        case 2 : { SortAlgos.insertionSort(myArray); 
-                        			algo = "Insertion Sort";
-                                   break;
-                                 }
-                        case 3 : { SortAlgos.mergeSort(myArray);
-                        			algo = "Merge Sort";
-                                   break;
-                                 }
-                        case 4 : { SortAlgos.quickSort(myArray); 
-                        			algo = "Quick Sort";
-                                   break;
-                                 }
-                        case 5 : { SortAlgos.heapSort(myArray);     
-                        			algo = "Heap Sort";
-                                   break;
-                                 }
-                        default: SortAlgos.bubbleSort(myArray);  
-			            			algo = "Bubble Sort";
-			                        break;
-                        		} 
+                        if(choice == 1) {
+                        	SortAlgos.selectionSort(myArray);
+                        	algo = "Selection Sort";
+                        }
+                        else if(choice == 2) {
+                        	SortAlgos.insertionSort(myArray);
+                        	algo = "Insertion Sort";
+                        }
+                        else if(choice == 3) {
+                        	SortAlgos.mergeSort(myArray);
+                        	algo = "Merge Sort";
+                        }
+                        else if(choice == 4) {
+                        	SortAlgos.quickSort(myArray);
+                        	algo = "Quick Sort";
+                        }
+                        else if(choice == 5) {
+                        	SortAlgos.heapSort(myArray);
+                        	algo = "Heap Sort";
+                        }
+                        else{
+                        	SortAlgos.bubbleSort(myArray);
+                        	algo = "Bubble Sort";
+                        } 
                         
                         // output initial sequence of unsorted and sorted array 
                         int limit = Math.min(myArray.length, 1024);
@@ -137,4 +131,5 @@ public class SortDemoData  {
                return outputBuf;            
         }        		
 }
+
 
